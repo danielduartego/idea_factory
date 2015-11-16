@@ -1,0 +1,20 @@
+<h2><p class="text-center"> New Idea </p></h2>
+
+<%= form_for @idea do |f| %>
+
+  <div class="form-group">
+    <%= f.label :title, "Title"  %>
+    <%= f.text_field :title, class: "form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :body, "Describe your idea" %>
+    <%= f.text_area :body, class: "form-control", rows: "7" %>
+  </div>
+
+  <div class="form-group">
+  <%= f.submit "Create idea", class: "btn btn-primary btn-md btn-block" %>
+  </div>
+
+
+<% end %>

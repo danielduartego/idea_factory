@@ -1,0 +1,57 @@
+<h3><%= @idea.title %></h3>
+<p><%= @idea.body %></p>
+
+<!-- created by -->
+<div class="">
+  <% if @idea.user %>
+    <p class="text-left"> by:
+    <%= @idea.user.full_name %>  </p>
+  <% end %>
+</div>
+
+<!-- like button  -->
+
+  <% if user_signed_in? && @idea.liked_by?(current_user)%>
+      <%= link_to "Liked", idea_like_path(@idea, @idea.like_for(current_user)), method: :delete %>
+  <% else %>
+        <%= link_to "Like", idea_likes_path(@idea), method: :post%>
+  <% end %>
+|
+<!-- join button  -->
+
+  <% if user_signed_in? && @idea.joined_by?(current_user)%>
+    <%= link_to "Joined", idea_join_path(@idea, @idea.join_for(current_user)), method: :delete %>
+  <% else %>
+    <%= link_to "Join", idea_joins_path(@idea), method: :post%>
+  <% end %>
+
+<div>
+  <p class="text-right" >
+    Members: <%= @idea.joins.count  %> |
+    Likes: <%= @idea.likes.count %></p> 
+</div>
+
+
+
+
+<!-- create a comment -->
+<div class="form-group">
+  <div class="form-group">
+  <%= form_for [@idea, @comment] do |f| %>
+  <%= f.label :body, "Write a comment" %>
+  <%= f.text_area :body, class: "form-control", rows: "3" %>
+  </div>
+    <%= f.submit " Comment ", class: "btn btn-primary btn-md"  %>
+  <% end %>
+
+</div>
+
+<!-- comments -->
+<div class="well">
+  <% @idea.comments.each do |comm| %>
+    <div class="">
+      <%= comm.body %>
+      <hr>
+    </div>
+  <% end %>
+</div>

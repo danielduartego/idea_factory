@@ -1,0 +1,10 @@
+<h2><p class="">Ideas Factory</p></h2>
+
+<table>
+      <% @ideas.each do |idea| %>
+        <tr>
+        <td><h3><%= link_to idea.title, idea_path(idea) %></h3>
+                <p class="lead"><%= idea.body %></p><hr/>
+        </td>
+      <% end %>
+</table>
