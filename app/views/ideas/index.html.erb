@@ -2,12 +2,12 @@
 <h1>Ideas Factory</h1>
 
 <!-- button new idea -->
-<% if user_signed_in? %>
+
 <div class="text-right">
   <button type="button" class="btn btn-primary" data-toggle="modal"
    data-target="#exampleModal" data-whatever="@mdo"> New Idea </button>
 </div>
-<% end %>
+
 
 <!-- ideas -->
 
@@ -25,11 +25,13 @@
 
 <!-- new id form  -->
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+ aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal"
+         aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="exampleModalLabel">New Idea</h4>
       </div>
 
