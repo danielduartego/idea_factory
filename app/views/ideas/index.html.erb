@@ -1,4 +1,15 @@
-<h2><p class="">Ideas Factory</p></h2>
+
+<h1>Ideas Factory</h1>
+
+<!-- button new idea -->
+<% if user_signed_in? %>
+<div class="text-right">
+  <button type="button" class="btn btn-primary" data-toggle="modal"
+   data-target="#exampleModal" data-whatever="@mdo"> New Idea </button>
+</div>
+<% end %>
+
+<!-- ideas -->
 
 <table>
       <% @ideas.each do |idea| %>
@@ -8,3 +19,46 @@
         </td>
       <% end %>
 </table>
+
+
+
+
+<!-- new id form  -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">New Idea</h4>
+      </div>
+
+
+        <div class="modal-body">
+
+
+        <%= form_for @idea do |f| %>
+              <div class="form-group">
+                <%= f.label :title, "Title"  %>
+                <%= f.text_field :title, class: "form-control"%>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :body, "Describe your idea" %>
+                <%= f.text_area :body, class: "form-control", rows: "7" %>
+              </div>
+
+
+          <div class="modal-footer">
+            <div class="form-group">
+            <%= f.submit "Post your idea", class: "btn btn-primary " %>
+            </div>
+          </div>
+        <% end %>
+        </div>
+
+
+
+    </div>
+  </div>
+</div>

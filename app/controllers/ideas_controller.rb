@@ -4,6 +4,7 @@ class IdeasController < ApplicationController
 
   def index
     @ideas = Idea.all.order(:created_at).reverse_order
+    @idea = Idea.new
   end
 
   def new
