@@ -23,7 +23,7 @@ class IdeasController < ApplicationController
 
   def show
     @idea = Idea.find params[:id]
-    @comments = @idea.comments
+    #@comments = @idea.comments
     @comment = Comment.new
   end
 

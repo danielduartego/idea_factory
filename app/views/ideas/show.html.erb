@@ -29,24 +29,26 @@
 
 <div>
   <p class="text-right" >
-    <strong>Members: </strong><%= @idea.joins.count  %> |
-    <strong>Likes: </strong><%= @idea.likes.count %></p>
+    <strong>
+      <%= pluralize(@idea.joins.count,"Member") %>  |
+      <%= pluralize(@idea.likes.count, "Like") %>
+    </strong>
+  </p>
 </div>
-
-
 
 
 <!-- create a comment -->
 <div class="form-group">
-  <div class="form-group">
+  <div class="">
   <%= form_for [@idea, @comment] do |f| %>
   <%= f.label :body, "Write a comment" %>
   <%= f.text_area :body, class: "form-control", rows: "3" %>
+  <br>
+  <%= f.submit " Comment ", class: "btn btn-primary btn-md"  %>
   </div>
-    <%= f.submit " Comment ", class: "btn btn-primary btn-md"  %>
   <% end %>
-
 </div>
+
 
 <!-- comments -->
   <div class="well">
